@@ -129,7 +129,7 @@ $ touch Podfile
 $ edit Podfile
 ```
 
-Edit your Podfile and add BWMCoverView:
+Edit your Podfile and add:
 
 ``` bash
 platform :ios, '7.0'
