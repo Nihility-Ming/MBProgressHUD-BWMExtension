@@ -14,7 +14,7 @@ NSString * const kBWMMBProgressHUDMsgLoadSuccessful = @"加载成功";
 NSString * const kBWMMBProgressHUDMsgNoMoreData = @"没有更多数据了";
 NSTimeInterval kBWMMBProgressHUDHideTimeInterval = 1.2f;
 
-static CGFloat FONT_SIZE = 14.0f;
+static CGFloat FONT_SIZE = 13.0f;
 static CGFloat OPACITY = 0.85;
 
 
@@ -23,7 +23,7 @@ static CGFloat OPACITY = 0.85;
 + (MBProgressHUD *)bwm_showHUDAddedTo:(UIView *)view title:(NSString *)title animated:(BOOL)animated {
     MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:view animated:animated];
     HUD.labelFont = [UIFont systemFontOfSize:FONT_SIZE];
-    HUD.labelText = title;
+    HUD.detailsLabelText = title;
     HUD.opacity = OPACITY;
     return HUD;
 }
@@ -31,14 +31,14 @@ static CGFloat OPACITY = 0.85;
 + (MBProgressHUD *)bwm_showHUDAddedTo:(UIView *)view title:(NSString *)title {
     MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:view animated:YES];
     HUD.labelFont = [UIFont systemFontOfSize:FONT_SIZE];
-    HUD.labelText = title;
+    HUD.detailsLabelText = title;
     HUD.opacity = OPACITY;
     return HUD;
 }
 
 - (void)bwm_hideWithTitle:(NSString *)title hideAfter:(NSTimeInterval)afterSecond {
     if (title) {
-        self.labelText = title;
+        self.detailsLabelText = title;
         self.mode = MBProgressHUDModeText;
     }
     [self hide:YES afterDelay:afterSecond];
@@ -51,7 +51,7 @@ static CGFloat OPACITY = 0.85;
 - (void)bwm_hideWithTitle:(NSString *)title
                 hideAfter:(NSTimeInterval)afterSecond
                   msgType:(BWMMBProgressHUDMsgType)msgType {
-    self.labelText = title;
+    self.detailsLabelText = title;
     self.mode = MBProgressHUDModeCustomView;
     self.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[[self class ]p_imageNamedWithMsgType:msgType]]];
     [self hide:YES afterDelay:afterSecond];
@@ -61,7 +61,7 @@ static CGFloat OPACITY = 0.85;
     MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:view animated:YES];
     HUD.mode = MBProgressHUDModeText;
     HUD.labelFont = [UIFont systemFontOfSize:FONT_SIZE];
-    HUD.labelText = title;
+    HUD.detailsLabelText = title;
     HUD.opacity = OPACITY;
     [HUD hide:YES afterDelay:afterSecond];
     return HUD;
@@ -78,7 +78,7 @@ static CGFloat OPACITY = 0.85;
     NSString *imageNamed = [self p_imageNamedWithMsgType:msgType];
     
     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageNamed]];
-    HUD.labelText = title;
+    HUD.detailsLabelText = title;
     HUD.opacity = OPACITY;
     HUD.mode = MBProgressHUDModeCustomView;
     [HUD hide:YES afterDelay:afterSecond];
@@ -104,7 +104,7 @@ static CGFloat OPACITY = 0.85;
     MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:view animated:YES];
     HUD.mode = MBProgressHUDModeDeterminateHorizontalBar;
     HUD.animationType = MBProgressHUDAnimationZoom;
-    HUD.labelText = kBWMMBProgressHUDMsgLoading;
+    HUD.detailsLabelText = kBWMMBProgressHUDMsgLoading;
     HUD.labelFont = [UIFont systemFontOfSize:FONT_SIZE];
     return HUD;
 }
