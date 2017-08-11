@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 Bi Weiming. All rights reserved.
 //
 
-#import "MBProgressHUD.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 /**
  *  @brief  Nihility-Ming对MBProgressHUD的扩展，方便使用。
